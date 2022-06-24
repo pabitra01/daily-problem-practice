@@ -1,0 +1,17 @@
+class longestPalindrome {
+    public int longestPalindrome(String s) {
+        int[] charCount=new int[128];
+        int res=0;
+        for(char c : s.toCharArray()){
+            charCount[c]++;
+        }
+        boolean flag=false;
+        for(int i : charCount){
+           res+=i/2*2;
+           if(res%2==0 && i%2==1){
+               res++;
+           }
+        }
+     return res;
+    }
+}
