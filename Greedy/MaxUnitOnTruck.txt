@@ -1,0 +1,33 @@
+class Solution {
+    public int maximumUnits(int[][] boxTypes, int truckSize) {
+        List<PairList> list=new ArrayList<>();
+        for(int i=0;i<boxTypes.length;i++){
+                list.add(new PairList(boxTypes[i][0],boxTypes[i][1]));
+        }
+        Collections.sort(list);
+        int box=0;
+        int unit=0;
+        for(PairList pl : list){
+            for(int i=0;i<pl.x;i++){
+                if(box<truckSize){
+                    unit+=pl.y;
+                    box++;
+                }
+            }
+        }
+        return unit;
+    }
+}
+class PairList implements Comparable<PairList>{
+    int x;
+    int y;
+    PairList(int x,int y){
+        this.x=x;
+        this.y=y;
+    }
+    @Override
+    public int compareTo(PairList o) {
+        return y<=o.y ? 1:-1;
+    }
+
+}
