@@ -1,0 +1,24 @@
+class Solution {
+    public List<Integer> minSubsequence(int[] nums) {
+        List<Integer> arr=new ArrayList<>();
+        int sum=0;
+        for(int i=0;i<nums.length;i++){
+            sum+=nums[i];
+        }
+        Arrays.sort(nums);
+        int n=0;
+        for(int i=nums.length-1;i>=0;i--){
+            int ele=nums[i];
+            n+=ele;
+            int sub_ele_from_sum=sum-n;
+            if(n<=sub_ele_from_sum){
+                arr.add(nums[i]);
+            }
+            else{
+                arr.add(nums[i]);
+                break;
+            }
+        }
+        return arr;
+    }
+}
